@@ -62,5 +62,12 @@ public interface JwtTokensService  {
      * @param user
      */
     void save2Redis(JwtToken jwtToken, UserEntity user);
+
+    /**
+     * 通过用户id删除令牌
+     *
+     * @param userId 用户id
+     */
+    void removeTokenByUserId(Long userId);
 }
 

@@ -2,21 +2,23 @@ spring:
   application:
     name: springboot-template
 
+# TODO MySQL相关配置
   datasource:
     url: jdbc:mysql://localhost:3306/common
-    username: root
-    password: qwer
+    username:
+    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+# TODO Redis相关配置
   redis:
     # Redis服务器连接端口
-    host: 192.168.159.134
-    # Redis数据库索引（默认为0）
+    host:
+    # Redis数据库索引
     database: 1
     port: 6379
     # 连接超时时间
     timeout: 5s
-    password: adorabled4
+    password:
     lettuce:
       pool:
         # 连接池最大连接数
@@ -28,25 +30,22 @@ spring:
         # 连接池中的最小空闲连接
         min-idle: 0
 
-  jackson:
-    serialization:
-      FAIL_ON_EMPTY_BEANS: false
 server:
-  port: 6848
+  port: 8080
   servlet:
     context-path: /api
+
 mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印sql
   global-config:
     db-config:
       logic-not-delete-value: 1 # mybatis-plus 逻辑删除
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印sql
-
 
 knife4j:
   enable: true
   openapi:
-    title: springboot-template_bankend
+    title: springboot-template_backend
     description: 后端接口文档
     email: dhx2648466390@163.com
     concat: adorabled4
@@ -57,7 +56,7 @@ knife4j:
     terms-of-service-url: https://blog.dhx.icu
     group:
       dev:
-        group-name: 开发环境
+        group-name: dev
         api-rule: package
         api-rule-resources:
           - com.dhx.template.controller
@@ -65,6 +64,12 @@ knife4j:
 logging:
   config: classpath:logback.xml # 日志配置文件
 
+# TODO 阿里云 sms
+sms:
+  endpoint: dysmsapi.aliyuncs.com
+  accessId:
+  accessKey:
+# 线程池配置
 template:
   thread:
     core-size: 20

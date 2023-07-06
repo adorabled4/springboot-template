@@ -1,7 +1,7 @@
 package com.dhx.template.aop;
 import com.dhx.template.common.annotation.SysLog;
 import com.dhx.template.common.BaseResponse;
-import com.dhx.template.model.DTO.UserDTO;
+import com.dhx.template.model.DTO.user.UserDTO;
 import com.dhx.template.utils.AopUtil;
 import com.dhx.template.utils.UserHolder;
 import lombok.Data;
@@ -31,7 +31,6 @@ import java.util.*;
 @Component
 @Slf4j
 public class SysLogAOP {
-
 
     // 定义切面
     @Pointcut("@annotation(com.dhx.template.common.annotation.SysLog)")

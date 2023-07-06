@@ -15,12 +15,37 @@ import java.util.List;
 */
 public interface UserService extends IService<UserEntity> {
 
+    /**
+     * 删除用户id
+     *
+     * @param userId 用户id
+     * @return {@link BaseResponse}<{@link Boolean}>
+     */
     BaseResponse<Boolean> deleteUserById(Long userId);
 
+    /**
+     * 获取用户列表
+     *
+     * @param pageSize 页面大小
+     * @param current  当前
+     * @return {@link BaseResponse}<{@link List}<{@link UserVO}>>
+     */
     BaseResponse<List<UserVO>> getUserList(int pageSize, int current);
 
+    /**
+     * 得到用户id
+     *
+     * @param userId 用户id
+     * @return {@link BaseResponse}<{@link UserVO}>
+     */
     BaseResponse<UserVO> getUserById(Long userId);
 
+    /**
+     * 添加用户
+     *
+     * @param userVo
+     * @return {@link BaseResponse}
+     */
     BaseResponse addUser(UserEntity userVo);
 
     /**
@@ -39,4 +64,29 @@ public interface UserService extends IService<UserEntity> {
      * @return 返回token
      */
     BaseResponse login(String userAccount, String password, HttpServletRequest request);
+
+    /**
+     * 是否是admin
+     *
+     * @param request 请求
+     * @return boolean
+     */
+    boolean isAdmin(HttpServletRequest request);
+
+
+    /**
+     * 是管理
+     *
+     * @param user 用户
+     * @return boolean
+     */
+    boolean isAdmin(UserEntity user);
+
+    /**
+     * 通过手机号登录(如果没有注册需要注册)
+     *
+     * @param phone    电话
+     * @return {@link BaseResponse}
+     */
+    BaseResponse<String> loginByPhone(String phone,HttpServletRequest request);
 }

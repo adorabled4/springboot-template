@@ -1,4 +1,4 @@
-package com.dhx.template.model.VO;
+package com.dhx.template.model.DTO.user;
 
 import com.dhx.template.common.constant.UserConstant;
 import lombok.Data;
@@ -9,27 +9,18 @@ import java.util.Date;
 
 /**
  * @author adorabled4
- * @className UserVO
- * @date : 2023/05/04/ 16:19
+ * @className UpdateUserRequest
+ * @date : 2023/07/05/ 16:18
  **/
 @Data
-public class UserVO implements Serializable {
+public class UpdateUserRequest implements Serializable {
 
-    /**
-     * 用户id
-     */
-    private Long userId;
 
     /**
      * 昵称
      */
     @Pattern(regexp = UserConstant.USER_ACCOUNT_REGEX, message = "用户名不符合规范!")
     private String userName;
-
-    /**
-     * 账户
-     */
-    private String userAccount;
 
     /**
      * 地址
@@ -57,11 +48,6 @@ public class UserVO implements Serializable {
      */
     @Pattern(regexp = UserConstant.EMAIL_REGEX, message = "邮箱不符合规范!")
     private String email;
-
-    /**
-     * 用户角色
-     */
-    private String userRole;
 
     /**
      * 出生日期

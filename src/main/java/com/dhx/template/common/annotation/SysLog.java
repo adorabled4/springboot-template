@@ -8,6 +8,7 @@ import java.lang.annotation.*;
 public @interface SysLog {
     /**
      * 执行的内容
+     *
      * @return
      */
     String value() default "";

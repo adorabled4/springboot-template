@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class RedisConstant {
 
     /**
-     *  jwt 秘钥
+     * jwt 秘钥
      */
     public static final String SECRET_KEY = "mySecretKey";
 
@@ -33,16 +33,22 @@ public class RedisConstant {
     /**
      * 缓存用户剩余次数
      */
-    public static final String USER_INTERFACE_INFO_PREFIX= "user:interface:";
+    public static final String USER_INTERFACE_INFO_PREFIX = "user:interface:";
 
     /**
      *
      */
     public static final long LEFT_NUM_TTL = TimeUnit.DAYS.toHours(12);
 
-
     /**
      * 是一个集合
      */
     public static final String INTERFACE_RANK_KEY = "interface:rank";
+
+    public static final String CODE_KEY = "login:code:";
+
+    /**
+     * 验证码有效时间
+     */
+    public static final long CODE_TTL = 60 * 5;
 }

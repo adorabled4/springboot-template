@@ -1,6 +1,6 @@
 package com.dhx.template.utils;
 
-import com.dhx.template.model.DTO.UserDTO;
+import com.dhx.template.model.DTO.user.UserDTO;
 
 /**
  * @author adorabled4
@@ -17,5 +17,4 @@ public class UserHolder {
     public static void setUser(UserDTO userDTO) {
         user.set(userDTO);
     }
-
 }

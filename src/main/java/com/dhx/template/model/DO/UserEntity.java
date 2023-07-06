@@ -6,7 +6,11 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
+
+import com.dhx.template.common.constant.UserConstant;
 import lombok.Data;
+
+import javax.validation.constraints.Pattern;
 
 /**
  * 
@@ -15,25 +19,29 @@ import lombok.Data;
 @TableName(value ="t_user")
 @Data
 public class UserEntity implements Serializable {
+
     /**
      * 用户id
      */
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.ASSIGN_ID)
     private Long userId;
 
     /**
      * 昵称
      */
+    @Pattern(regexp = UserConstant.USER_NAME_REGEX, message = "用户名不符合规范!")
     private String userName;
 
     /**
      * 账户
      */
+    @Pattern(regexp = UserConstant.USER_ACCOUNT_REGEX, message = "用户名不符合规范!")
     private String userAccount;
 
     /**
      * 登录密码
      */
+    @Pattern(regexp = UserConstant.PASSWORD_REGEX, message = "用户名不符合规范!")
     private String userPassword;
 
     /**
@@ -84,14 +92,14 @@ public class UserEntity implements Serializable {
     /**
      * 是否是管理员
      */
-    private Integer userRole;
+    private String userRole;
 
     /**
      * 出生日期
      */
     private Date birth;
 
-    public UserEntity(Long userId, String userName, String avatarUrl, Integer userRole) {
+    public UserEntity(Long userId, String userName, String avatarUrl, String userRole) {
         this.userId = userId;
         this.userName = userName;
         this.avatarUrl = avatarUrl;

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import javax.validation.ConstraintViolationException;
@@ -36,6 +37,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = {MethodArgumentTypeMismatchException.class, MissingServletRequestParameterException.class,
             ConversionFailedException.class, ConstraintViolationException.class, HttpMessageNotReadableException.class})
     public BaseResponse handleMethodArgumentTypeMismatchException(HttpMessageNotReadableException e) {
+        log.error(e.getMessage(), e);
         return ResultUtil.error(ErrorCode.PARAMS_ERROR);
     }
 
@@ -43,9 +45,18 @@ public class GlobalExceptionHandler {
      * 处理自定义异常
      */
     @ExceptionHandler(BusinessException.class)
-    public BaseResponse<Object> handleRRException(BusinessException e){
-        log.error(e.getDescription(), e);
-        return ResultUtil.error(e.getCode(),e.getMessage(),e.getDescription());
+    public BaseResponse<Object> handleRRException(BusinessException e) {
+        log.error(e.getMessage(), e);
+        return ResultUtil.error(e.getCode(), e.getMessage());
+    }
+
+    @ExceptionHandler(value = MultipartException.class)
+    public Object fileUploadExceptionHandler(MultipartException exception) {
+        Throwable rootCause = exception.getRootCause();
+//        if (rootCause instanceof MultiPartParserDefinition.FileTooLargeException) {
+//            return ResultUtil.error(ErrorCode.UPLOAD_ERROR, "文件过大!");
+//        }
+        return ResultUtil.error(ErrorCode.UPLOAD_ERROR);
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
@@ -55,6 +66,12 @@ public class GlobalExceptionHandler {
     }
 
 
+    /**
+     * 处理参数异常
+     *
+     * @param e e
+     * @return {@link BaseResponse}
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
     public BaseResponse handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
@@ -66,11 +83,11 @@ public class GlobalExceptionHandler {
                 sb.append(objectError.getDefaultMessage()).append(";");
             }
         }
-        return ResultUtil.error(ErrorCode.PARAMS_ERROR,sb.toString());
+        return ResultUtil.error(ErrorCode.PARAMS_ERROR, sb.toString());
     }
 
     @ExceptionHandler(Exception.class)
-    public BaseResponse handleException(Exception e){
+    public BaseResponse handleException(Exception e) {
         log.error(e.getMessage(), e);
         return ResultUtil.error();
     }

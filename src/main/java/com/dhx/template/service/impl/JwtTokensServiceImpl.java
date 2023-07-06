@@ -77,7 +77,7 @@ public class JwtTokensServiceImpl implements JwtTokensService {
             String userName = claims.getSubject();
             String userId = getUserIdFromToken(token);
             String avatarUrl = (String) claims.get("avatarUrl") ;
-            Integer userRole = (Integer) claims.get("userRole") ;
+            String userRole = (String) claims.get("userRole") ;
             String key = ACCESS_TOKEN_PREFIX + userId;
             String storedToken = stringRedisTemplate.opsForValue().get(key);
 
@@ -110,7 +110,6 @@ public class JwtTokensServiceImpl implements JwtTokensService {
     }
 
 
-
     @Override
     public void cleanExpiredTokens() {
         stringRedisTemplate.keys("*").forEach(key -> {
@@ -133,7 +132,6 @@ public class JwtTokensServiceImpl implements JwtTokensService {
         return expirationDate.before(new Date());
     }
 
-
     @Override
     public void save2Redis(JwtToken jwtToken, UserEntity user) {
         String token = jwtToken.getToken();
@@ -142,6 +140,14 @@ public class JwtTokensServiceImpl implements JwtTokensService {
         String refreshKey = REFRESH_TOKEN_PREFIX + user.getUserId();
         stringRedisTemplate.opsForValue().set(accessKey,token,EXPIRATION_TIME, TimeUnit.SECONDS);
         stringRedisTemplate.opsForValue().set(refreshKey,refreshToken,EXPIRATION_TIME, TimeUnit.SECONDS);
+    }
+
+    @Override
+    public void removeTokenByUserId(Long userId) {
+        String accessKey = ACCESS_TOKEN_PREFIX + userId;
+        String refreshKey = REFRESH_TOKEN_PREFIX + userId;
+        stringRedisTemplate.opsForValue().getAndDelete(accessKey);
+        stringRedisTemplate.opsForValue().getAndDelete(refreshKey);
     }
 }
 

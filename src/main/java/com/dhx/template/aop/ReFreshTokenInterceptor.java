@@ -6,7 +6,7 @@ import com.dhx.template.common.exception.BusinessException;
 import com.dhx.template.common.constant.JwtConstant;
 import com.dhx.template.common.constant.RedisConstant;
 import com.dhx.template.model.DO.UserEntity;
-import com.dhx.template.model.DTO.UserDTO;
+import com.dhx.template.model.DTO.user.UserDTO;
 import com.dhx.template.service.JwtTokensService;
 import com.dhx.template.utils.UserHolder;
 import org.springframework.data.redis.core.StringRedisTemplate;

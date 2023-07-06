@@ -1,4 +1,4 @@
-package com.dhx.template.model.DTO;
+package com.dhx.template.model.DTO.user;
 
 import lombok.Data;
 
@@ -32,6 +32,6 @@ public class UserDTO implements Serializable {
     /**
      * 用户角色
      */
-    private Integer userRole;
+    private String userRole;
 
 }
