@@ -36,6 +36,7 @@
 - Logback日志配置
 - 阿里云SMS配置
 - 线程池配置
+- Mybatis-plus
 - 统一返回结果
 - 全局异常处理、统一错误枚举
 - Dockerfile文件
