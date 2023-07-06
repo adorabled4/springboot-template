@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 /**
- * @author adorabled4
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className SmsConfig
  * @date : 2023/07/05/ 17:53
  **/

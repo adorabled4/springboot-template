@@ -23,7 +23,7 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 /**
- * @author dhx_
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className SysLogAOP
  * @date : 2023/03/24/ 22:11
  **/

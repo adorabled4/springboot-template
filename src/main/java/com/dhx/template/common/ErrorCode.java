@@ -1,7 +1,7 @@
 package com.dhx.template.common;
 
 /**
- * @author dhx_
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className ErrorCode <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP"> 关于HTTP状态码 </a>
  * @date : 2023/01/07/ 14:34
  **/

@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * @author adorabled4
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className ThreadPoolConfigProperties
  * @date : 2023/05/04/ 17:00
  **/

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author dhx_
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className MybatisConfig  注入mybatis-plus分页拦截器,
  * @date : 2023/01/07/ 14:55
  **/

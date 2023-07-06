@@ -6,7 +6,7 @@ import lombok.Data;
 import javax.validation.constraints.Pattern;
 
 /**
- * @author adorabled4
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className LoginParam
  * @date : 2023/05/04/ 16:41
  **/

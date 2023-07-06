@@ -6,7 +6,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author dhx_
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className BusinessException
  * @date : 2023/01/07/ 14:28
  **/

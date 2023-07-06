@@ -3,7 +3,7 @@ package com.dhx.template.utils;
 import com.dhx.template.model.DTO.user.UserDTO;
 
 /**
- * @author adorabled4
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className UserHolder
  * @date : 2023/05/04/ 16:13
  **/

@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 /**
- * @author adorabled4
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className LoginBuPhoneReqeust
  * @date : 2023/07/05/ 16:40
  **/

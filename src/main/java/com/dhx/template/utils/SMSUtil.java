@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 import java.util.Random;
 
 /**
- * @author adorabled4
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className SMSUtils
  * @date : 2023/07/05/ 17:55
  **/

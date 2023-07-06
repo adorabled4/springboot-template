@@ -8,7 +8,7 @@ import java.io.*;
 import java.nio.channels.FileChannel;
 
 /**
- * @author adorabled4
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className FileUtil
  * @date : 2023/07/05/ 15:45
  **/

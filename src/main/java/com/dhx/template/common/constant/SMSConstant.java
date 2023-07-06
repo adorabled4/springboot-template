@@ -1,8 +1,7 @@
 package com.dhx.template.common.constant;
 
 /**
- *  <a href="https://next.api.aliyun.com/api/Dysmsapi/"> aliyun代码示例 </a>
- * @author adorabled4 TODO SMS相关配置
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a> TODO SMS相关配置
  * @className SMSConstant
  * @date : 2023/07/05/ 17:56
  **/

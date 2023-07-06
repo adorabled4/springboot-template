@@ -3,6 +3,7 @@
 该项目是一个基于Spring Boot框架的开发模板，旨在帮助开发者迅速的进行开发，不必花费时间在大量的重复工作。
 
 ## 版本信息
+
 包含了主要项的版本信息，更多内容请参考**pom.xml**
 
 | 项            | 版本     |
@@ -32,9 +33,6 @@
 
 项目主要包含以下内容：
 
-- MySQL
-- Mybatis-plus
-- Redis
 - Logback日志配置
 - 阿里云SMS配置
 - 线程池配置
@@ -44,8 +42,8 @@
 - AOP权限认证以及日志处理
 - 基本的用户CRUD、登录注册等逻辑、对应的SQL文件
 - JWT双Token登录
-- 常用工具类配置
-- Knife4j接口文档配置: 访问`http://localhost:8080/apicore/doc.html`
+- 常用工具类
+- Knife4j接口文档: 访问`http://localhost:8080/api/doc.html`
 - Springboot`@Scheduled`定时任务
 
 
@@ -56,7 +54,7 @@
 3. 构建项目：`mvn clean package`
 4. 运行项目：`java -jar target/template.jar`
 5. 构建镜像：`docker build -f Dockerfile -t template:v1 .`
-6. 运行容器：`docker run -d -p 6848:6848 --name tempalte template:v1`
+6. 运行容器：`docker run -d -p 8080:8080 --name tempalte template:v1`
 
 
 ## 许可证

@@ -19,7 +19,7 @@ import static com.dhx.template.common.constant.RedisConstant.ACCESS_TOKEN_PREFIX
 import static com.dhx.template.common.constant.RedisConstant.REFRESH_TOKEN_PREFIX;
 
 /**
- * @author adorabled4
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className JwtTokensServiceImpl
  * @date : 2023/05/04/ 16:48
  **/

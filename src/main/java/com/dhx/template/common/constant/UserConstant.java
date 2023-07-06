@@ -1,7 +1,7 @@
 package com.dhx.template.common.constant;
 
 /**
- * @author dhx_
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className UserConstans
  * @date : 2023/01/07/ 14:53
  **/

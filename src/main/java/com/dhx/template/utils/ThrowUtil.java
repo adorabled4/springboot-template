@@ -4,7 +4,7 @@ import com.dhx.template.common.ErrorCode;
 import com.dhx.template.common.exception.BusinessException;
 
 /**
- * @author adorabled4
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className ThrowUtil
  * @date : 2023/07/05/ 15:08
  **/

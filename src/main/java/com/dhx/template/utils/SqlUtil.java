@@ -3,7 +3,7 @@ package com.dhx.template.utils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author adorabled4
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className SqlUtil
  * @date : 2023/07/05/ 15:09
  **/

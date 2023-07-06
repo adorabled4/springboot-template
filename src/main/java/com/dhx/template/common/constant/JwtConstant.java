@@ -1,7 +1,7 @@
 package com.dhx.template.common.constant;
 
 /**
- * @author adorabled4
+ * @author <a href="https://blog.dhx.icu/"> adorabled4 </a>
  * @className JwtConstant
  * @date : 2023/05/04/ 16:48
  **/
