@@ -9,10 +9,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.dhx.template.common.BaseResponse;
 import com.dhx.template.common.ErrorCode;
 import com.dhx.template.common.constant.UserConstant;
+import com.dhx.template.common.exception.BusinessException;
 import com.dhx.template.model.DO.UserEntity;
 import com.dhx.template.model.DTO.JwtToken;
 import com.dhx.template.model.DTO.user.UserDTO;
+import com.dhx.template.model.DTO.user.VerifyCodeRegisterRequest;
 import com.dhx.template.model.VO.UserVO;
+import com.dhx.template.model.enums.UserRoleEnum;
 import com.dhx.template.service.JwtTokensService;
 import com.dhx.template.service.UserService;
 import com.dhx.template.mapper.UserMapper;
@@ -118,6 +121,98 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity>
         updateById(user);
         // 返回jwtToken
         return ResultUtil.success(token);
+    }
+
+    /**
+     * 用户登录
+     *
+     * @param email    账户
+     * @param password 密码
+     * @return 返回token
+     */
+    @Override
+    public BaseResponse login(String email, String password) {
+        try {
+            //1. 获取的加密密码
+            UserEntity user = query().eq("email", email).one();
+            String handlerPassword = user.getUserPassword();
+            //1.1 检查用户的使用状态
+            if(user.getUserRole().equals(UserRoleEnum.BAN.getValue())){
+                return ResultUtil.error(ErrorCode.PARAMS_ERROR, "该用户已被禁用!");
+            }
+            //2. 查询用户密码是否正确
+            boolean checkpw = BCrypt.checkpw(password, handlerPassword);
+            if (!checkpw) {
+                return ResultUtil.error(ErrorCode.PARAMS_ERROR, "邮箱或密码错误!");
+            }
+            //3. 获取jwt的token并将token写入Redis
+            String token = jwtTokensService.generateAccessToken(user);
+            String refreshToken = jwtTokensService.generateRefreshToken(user);
+            JwtToken jwtToken = new JwtToken(token, refreshToken);
+            jwtTokensService.save2Redis(jwtToken, user);
+            // 返回jwtToken
+            return ResultUtil.success(token);
+        } catch (RuntimeException e) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户未注册");
+        }
+    }
+
+    /**
+     * 通过邮箱注册
+     *
+     * @param request 请求
+     * @return boolean
+     */
+    @Override
+    public boolean register(VerifyCodeRegisterRequest request) {
+        String password = request.getPassword();
+        String email = request.getEmail();
+        // 封装信息
+        UserEntity user = new UserEntity();
+        // 加密用户密码
+        String handlerPassword = BCrypt.hashpw(password);
+        user.setUserName("user-" + UUID.randomUUID().toString().substring(0, 4));
+        user.setUserPassword(handlerPassword);
+        user.setEmail(email);
+        boolean save = save(user);
+        return save;
+    }
+
+    /**
+     * 登录
+     *
+     * @param email 电子邮件
+     * @return {@link BaseResponse}
+     */
+    @Override
+    public BaseResponse quickLogin(String email) {
+        //1. 获取的加密密码
+        List<UserEntity> users = list(new QueryWrapper<UserEntity>().eq("email", email));
+        UserEntity user;
+        if (users == null || users.size() == 0) {
+            user = quickRegister(email);
+        } else {
+            user = users.get(0);
+        }
+        //3. 获取jwt的token并将token写入Redis
+        String token = jwtTokensService.generateAccessToken(user);
+        String refreshToken = jwtTokensService.generateRefreshToken(user);
+        JwtToken jwtToken = new JwtToken(token, refreshToken);
+        jwtTokensService.save2Redis(jwtToken, user);
+        return ResultUtil.success(token);
+    }
+
+    private UserEntity quickRegister(String email) {
+        // 封装信息
+        UserEntity user = new UserEntity();
+        // 加密用户密码
+        user.setUserName("user-" + UUID.randomUUID().toString().substring(0, 4));
+        user.setEmail(email);
+        boolean save = save(user);
+        if (!save) {
+            throw new BusinessException(ErrorCode.SYSTEM_ERROR, "登录失败!");
+        }
+        return user;
     }
 
     @Override

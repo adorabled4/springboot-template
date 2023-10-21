@@ -51,4 +51,6 @@ public class RedisConstant {
      * 验证码有效时间
      */
     public static final long CODE_TTL = 60 * 5;
+
+    public static final String VERIFY_CODE_KEY = "user:verifycode:";
 }

@@ -3,6 +3,7 @@ package com.dhx.template.service;
 import com.dhx.template.common.BaseResponse;
 import com.dhx.template.model.DO.UserEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.dhx.template.model.DTO.user.VerifyCodeRegisterRequest;
 import com.dhx.template.model.VO.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -89,4 +90,29 @@ public interface UserService extends IService<UserEntity> {
      * @return {@link BaseResponse}
      */
     BaseResponse<String> loginByPhone(String phone,HttpServletRequest request);
+
+    /**
+     * 用户登录
+     *
+     * @param email 账户
+     * @param password    密码
+     * @return 返回token
+     */
+    BaseResponse login(String email, String password);
+
+    /**
+     * 通过邮箱注册
+     *
+     * @param request 请求
+     * @return boolean
+     */
+    boolean register(VerifyCodeRegisterRequest request);
+
+    /**
+     * 登录
+     *
+     * @param email 电子邮件
+     * @return {@link BaseResponse}
+     */
+    BaseResponse quickLogin(String email);
 }

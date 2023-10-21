@@ -1,7 +1,12 @@
 spring:
   application:
     name: springboot-template
-
+# TODO mail配置
+  mail:
+    host: smtp.163.com
+    port: 25
+    username: xxxxxxxxxxxxx@xx.com# 发送者
+    password: Agf******HNB # 授权码 , 需手动在邮箱申请
 # TODO MySQL相关配置
   datasource:
     url: jdbc:mysql://localhost:3306/common
@@ -67,11 +72,20 @@ logging:
 # TODO 阿里云 sms
 sms:
   endpoint: dysmsapi.aliyuncs.com
-  accessId:
-  accessKey:
+  accessId: LTAI5*************5Ax7n
+  accessKey: NC***************Yv3Pbfj
 # 线程池配置
 template:
   thread:
     core-size: 20
     max-size: 200
     keep-alive-time: 10
+# TODO OSS
+alibaba:
+  cloud:
+    oss:
+      endpoint: https://oss-cn-beijing.aliyuncs.com
+      bucket: d****g
+      domain: https://oss.dhx.icu/
+      access-key: LTAI5*************5Ax7n
+      secret-key: NC***************Yv3Pbfj

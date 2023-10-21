@@ -41,11 +41,13 @@
 - 全局异常处理、统一错误枚举
 - Dockerfile文件
 - AOP权限认证以及日志处理
-- 基本的用户CRUD、登录注册等逻辑、对应的SQL文件
+- 用户控制层接口(邮箱、手机号登录注册,更新信息、头像，以及CRUD)
 - JWT双Token登录
 - 常用工具类
 - Knife4j接口文档: 访问`http://localhost:8080/api/doc.html`
-- Springboot`@Scheduled`定时任务
+- OSS上传Manager
+- javaMail发送邮件
+- JSR303参数校验
 
 
 ## 如何运行
